@@ -5,11 +5,11 @@ import com.example.ShardedSagaWallet.repository.WalletRepository;
 import com.example.ShardedSagaWallet.saga.SagaContext;
 import com.example.ShardedSagaWallet.saga.SagaStep;
 import groovy.util.logging.Slf4j;
-import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 
@@ -51,6 +51,7 @@ public class CreditDestinationWalletStep implements SagaStep {
         return true;
     }
 
+    @Transactional
     @Override
     public boolean compensate(SagaContext context) {
         // 1. get the destination wallet id from the context
