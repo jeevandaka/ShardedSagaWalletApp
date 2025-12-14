@@ -1,9 +1,12 @@
 package com.example.ShardedSagaWallet.saga;
 
+import lombok.Builder;
+
 import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 
+@Builder
 public class SagaContext {
     private Map<String,Object> data;
 

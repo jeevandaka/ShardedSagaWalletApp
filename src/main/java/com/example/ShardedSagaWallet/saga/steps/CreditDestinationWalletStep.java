@@ -3,7 +3,7 @@ package com.example.ShardedSagaWallet.saga.steps;
 import com.example.ShardedSagaWallet.entities.Wallet;
 import com.example.ShardedSagaWallet.repository.WalletRepository;
 import com.example.ShardedSagaWallet.saga.SagaContext;
-import com.example.ShardedSagaWallet.saga.SagaStep;
+import com.example.ShardedSagaWallet.saga.SagaStepInterface;
 import groovy.util.logging.Slf4j;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
@@ -16,7 +16,7 @@ import java.math.BigDecimal;
 @Service
 @RequiredArgsConstructor
 @Slf4j
-public class CreditDestinationWalletStep implements SagaStep {
+public class CreditDestinationWalletStep implements SagaStepInterface {
 
     private static final Logger log = LoggerFactory.getLogger(CreditDestinationWalletStep.class);
     private final WalletRepository walletRepository;

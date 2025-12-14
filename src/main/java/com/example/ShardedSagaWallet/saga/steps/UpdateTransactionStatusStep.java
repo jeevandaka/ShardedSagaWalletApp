@@ -4,7 +4,7 @@ import com.example.ShardedSagaWallet.entities.Transaction;
 import com.example.ShardedSagaWallet.entities.TransactionStatus;
 import com.example.ShardedSagaWallet.repository.TransactionRepository;
 import com.example.ShardedSagaWallet.saga.SagaContext;
-import com.example.ShardedSagaWallet.saga.SagaStep;
+import com.example.ShardedSagaWallet.saga.SagaStepInterface;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -13,7 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 @RequiredArgsConstructor
 @Slf4j
-public class UpdateTransactionStatusStep implements SagaStep {
+public class UpdateTransactionStatusStep implements SagaStepInterface {
 
     private final TransactionRepository transactionRepository;
 
