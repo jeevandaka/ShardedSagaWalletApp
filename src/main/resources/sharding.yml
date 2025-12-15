@@ -28,6 +28,41 @@ rules:
           column: id
           keyGeneratorName: snowflakestrategy
 
+      saga_instance:
+        actualDataNodes: shardwallet${1..2}.saga_instance # shardwalle1.user and shardwallet2.user
+        tableStrategy:
+          none: { }
+        keyGenerateStrategy:
+          column: id
+          keyGeneratorName: snowflakestrategy
+
+
+      wallet:
+        actualDataNodes: shardwallet${1..2}.wallet # shardwalle1.user and shardwallet2.user
+        tableStrategy:
+          none: { }
+        keyGenerateStrategy:
+          column: id
+          keyGeneratorName: snowflakestrategy
+
+
+      transaction:
+        actualDataNodes: shardwallet${1..2}.transaction # shardwalle1.user and shardwallet2.user
+        tableStrategy:
+          none: { }
+        keyGenerateStrategy:
+          column: id
+          keyGeneratorName: snowflakestrategy
+
+
+      saga_step:
+        actualDataNodes: shardwallet${1..2}.saga_step # shardwalle1.user and shardwallet2.user
+        tableStrategy:
+          none: { }
+        keyGenerateStrategy:
+          column: id
+          keyGeneratorName: snowflakestrategy
+
     shardingAlgorithms:
       db-inline:
         type: INLINE
