@@ -25,5 +25,5 @@ public interface WalletRepository extends JpaRepository<Wallet,Long> {
     @Query("UPDATE Wallet w SET w.balance = :balance WHERE w.userId = :userId")
     void updateBalanceByUserId(@Param("userId") Long userId, @Param("balance") BigDecimal balance);
 
-    List<Wallet> findByUserId(Long userId);
+    Wallet findByUserId(Long userId);
 }

@@ -58,6 +58,7 @@ public class TransferSagaService {
 
         try {
             for(SagaStepFactory.SagaStepType step : SagaStepFactory.TransferMoneySagaSteps) {
+                log.info("Going to execute step {}", step.toString());
                 boolean success  = sagaOrchestrator.executeStep(sagaInstanceId, step.toString() );
                 if(!success) {
                     log.error("Failed to execute step {}", step.toString());

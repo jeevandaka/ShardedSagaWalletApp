@@ -24,6 +24,10 @@ rules:
         actualDataNodes: shardwallet${1..2}.user # shardwalle1.user and shardwallet2.user
         tableStrategy:
           none: {}
+        databaseStrategy:
+          standard:
+            shardingColumn: id
+            shardingAlgorithmName: db-inline
         keyGenerateStrategy:
           column: id
           keyGeneratorName: snowflakestrategy
@@ -32,6 +36,10 @@ rules:
         actualDataNodes: shardwallet${1..2}.saga_instance # shardwalle1.user and shardwallet2.user
         tableStrategy:
           none: { }
+        databaseStrategy:
+          standard:
+            shardingColumn: id
+            shardingAlgorithmName: db-inline
         keyGenerateStrategy:
           column: id
           keyGeneratorName: snowflakestrategy
@@ -41,6 +49,10 @@ rules:
         actualDataNodes: shardwallet${1..2}.wallet # shardwalle1.user and shardwallet2.user
         tableStrategy:
           none: { }
+        databaseStrategy:
+          standard:
+            shardingColumn: user_id
+            shardingAlgorithmName: db-inline-user-id
         keyGenerateStrategy:
           column: id
           keyGeneratorName: snowflakestrategy
@@ -50,6 +62,10 @@ rules:
         actualDataNodes: shardwallet${1..2}.transaction # shardwalle1.user and shardwallet2.user
         tableStrategy:
           none: { }
+        databaseStrategy:
+          standard:
+            shardingColumn: id
+            shardingAlgorithmName: db-inline
         keyGenerateStrategy:
           column: id
           keyGeneratorName: snowflakestrategy
@@ -59,6 +75,10 @@ rules:
         actualDataNodes: shardwallet${1..2}.saga_step # shardwalle1.user and shardwallet2.user
         tableStrategy:
           none: { }
+        databaseStrategy:
+          standard:
+            shardingColumn: id
+            shardingAlgorithmName: db-inline
         keyGenerateStrategy:
           column: id
           keyGeneratorName: snowflakestrategy
@@ -68,6 +88,11 @@ rules:
         type: INLINE
         props:
           algorithm-expression: shardwallet${id % 2 + 1}
+
+      db-inline-user-id:
+        type: INLINE
+        props:
+          algorithm-expression: shardwallet${user_id % 2 + 1}
 
     keyGenerators:
       snowflakestrategy:

@@ -5,6 +5,7 @@ import com.example.ShardedSagaWallet.repository.WalletRepository;
 import com.example.ShardedSagaWallet.saga.SagaContext;
 import com.example.ShardedSagaWallet.saga.SagaStepInterface;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -14,10 +15,10 @@ import java.math.BigDecimal;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class DebitSourceWalletStep implements SagaStepInterface {
 
     private final WalletRepository walletRepository;
-    private static final Logger log = LoggerFactory.getLogger(CreditDestinationWalletStep.class);
 
     @Transactional
     @Override
@@ -39,10 +40,12 @@ public class DebitSourceWalletStep implements SagaStepInterface {
         context.put("originalFromWalletBalance",sourceWallet.getBalance());
 
         //3. debit amount from source wallet
-        sourceWallet.debit(amount);
+//        sourceWallet.debit(amount);
+//
+//        //4. save into database
+//        walletRepository.save(sourceWallet);
 
-        //4. save into database
-        walletRepository.save(sourceWallet);
+        walletRepository.updateBalanceByUserId(id, sourceWallet.getBalance().subtract(amount));
 
         log.info("wallet saved with balance {}", sourceWallet.getBalance());
 
@@ -66,10 +69,12 @@ public class DebitSourceWalletStep implements SagaStepInterface {
 //        log.info("wallet fetched with balance {}", sourceWallet.getBalance());
 
         //3. debit amount from source wallet
-        sourceWallet.credit(amount);
+//        sourceWallet.credit(amount);
+//
+//        //4. save into database
+//        walletRepository.save(sourceWallet);
 
-        //4. save into database
-        walletRepository.save(sourceWallet);
+        walletRepository.updateBalanceByUserId(id, sourceWallet.getBalance().add(amount));
 
 //        log.info("wallet saved with balance {}", sourceWallet.getBalance());
 

@@ -1,14 +1,23 @@
 package com.example.ShardedSagaWallet.saga;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Builder;
+import lombok.Getter;
+import lombok.ToString;
 
 import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 
 @Builder
+@Getter
 public class SagaContext {
     private Map<String,Object> data;
+
+    public SagaContext() {
+        // required by Jackson
+    }
+
 
     public SagaContext(Map<String, Object> data){
         this.data = data != null ? data : new HashMap<>();
