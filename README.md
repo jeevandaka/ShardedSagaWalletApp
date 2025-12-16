@@ -11,3 +11,5 @@ It ensures data consistency across multiple local transactions without using 2PC
 - Compensation logic for rollback on failure
 - Transaction lifecycle tracking
 - Sharding-friendly repository design
+
+<img width="1097" height="385" alt="saga drawio (1)" src="https://github.com/user-attachments/assets/4a3b2f18-1073-4f1d-8dbf-92d7aae135bb" />
