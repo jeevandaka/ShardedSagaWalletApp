@@ -11,5 +11,3 @@ It ensures data consistency across multiple local transactions without using 2PC
 - Compensation logic for rollback on failure
 - Transaction lifecycle tracking
 - Sharding-friendly repository design
-
-![](C:\Users\Jeevan Daka\Downloads\saga.drawio (1).png)
